@@ -1004,7 +1004,7 @@ func main() {
 	// usage message.
 	if cmd != "cat" && cmd != "download" && cmd != "df" && cmd != "du" &&
 		cmd != "fsck" && cmd != "ls" && cmd != "mkdir" && cmd != "rm" &&
-		cmd != "upload" && cmd != "setprop" {
+		cmd != "upload" && cmd != "setprop" && cmd != "getprop" {
 		shortUsage()
 		os.Exit(1)
 	}
@@ -1065,8 +1065,8 @@ func main() {
 		errs = du(args)
 	case "fsck":
 		errs = fsck(args, *metadataCacheFilename)
-	//case "getprop":
-	//	errs = getprop(args)
+	case "getprop":
+		errs = getprop(args)
 	case "ls":
 		errs = ls(args)
 	case "mkdir":
