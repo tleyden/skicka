@@ -30,11 +30,6 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	"github.com/google/skicka/gdrive"
-	"golang.org/x/crypto/pbkdf2"
-	"golang.org/x/net/context"
-	"golang.org/x/oauth2"
-	"gopkg.in/gcfg.v1"
 	"io"
 	"io/ioutil"
 	"log"
@@ -50,6 +45,12 @@ import (
 	"sync"
 	"sync/atomic"
 	"time"
+
+	"github.com/google/skicka/gdrive"
+	"golang.org/x/crypto/pbkdf2"
+	"golang.org/x/net/context"
+	"golang.org/x/oauth2"
+	"gopkg.in/gcfg.v1"
 )
 
 const timeFormat = "2006-01-02T15:04:05.000000000Z07:00"
@@ -1064,12 +1065,16 @@ func main() {
 		errs = du(args)
 	case "fsck":
 		errs = fsck(args, *metadataCacheFilename)
+	//case "getprop":
+	//	errs = getprop(args)
 	case "ls":
 		errs = ls(args)
 	case "mkdir":
 		errs = mkdir(args)
 	case "rm":
 		errs = rm(args)
+	case "setprop":
+		errs = setprop(args)
 	case "upload":
 		errs = upload(args)
 		gd.UpdateMetadataCache(*metadataCacheFilename)
