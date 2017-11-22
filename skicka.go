@@ -1004,7 +1004,7 @@ func main() {
 	// usage message.
 	if cmd != "cat" && cmd != "download" && cmd != "df" && cmd != "du" &&
 		cmd != "fsck" && cmd != "ls" && cmd != "mkdir" && cmd != "rm" &&
-		cmd != "upload" {
+		cmd != "upload" && cmd != "setprop" {
 		shortUsage()
 		os.Exit(1)
 	}

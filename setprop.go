@@ -27,15 +27,29 @@ func setprop(args []string) int {
 	for _, path := range drivePaths {
 
 		file, err := gd.GetFile(path)
+		fmt.Printf("file: %+v", file)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "skicka: Error getting file found at path %s: %v\n", path, err)
 			errs++
 		}
 
-		currentProperties := file.Properties
-		fmt.Printf("file properties: %+v", currentProperties)
+		//currentProperties := file.Properties
+		//fmt.Printf("file properties: %+v", currentProperties)
+		//
+		//property := gdrive.Property{
+		//	Key: "testprop",
+		//	Value: "testval",
+		//}
+		//
+		//file.Properties = append(currentProperties, property)
+
+		if err := gd.UpdateProperty(file, "testprop", "testval3"); err != nil {
+			fmt.Fprintf(os.Stderr, "skicka: Error setting property for file %s: %v\n", path, err)
+			errs++
+		}
 
 	}
 
+	return errs
 
 }
